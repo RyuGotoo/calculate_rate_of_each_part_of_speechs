@@ -20,7 +20,9 @@ def create_blogs(text):
     # 形態素解析
     pos_list = []
     for token in Tokenizer().tokenize(text):
-        pos_list.append(token.part_of_speech.split(',')[0])
+        pos = token.part_of_speech.split(',')[0]
+        if pos != '記号':
+            pos_list.append(pos)
     blog.pos_num = len(pos_list)
 
     # 品詞 (pos) カウント
